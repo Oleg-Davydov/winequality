@@ -31,15 +31,7 @@ load(rawConnection(url.model));
 shinyServer(function(input, output) {
      
      data <- reactive({
-#           pm <- as.data.frame(setNames(
-#                replicate(11,numeric(0), simplify = F), names(wine)[1:11]))
-#           
-#           for (col in names(wine)[1:11]) 
-#           {
-#                pm[,col] <- input[[col]]
-#           }
-#           pm
-          
+     
           res <- as.data.frame(t(sapply(names(wine)[1:11], function(i) input[[i]])))
           res$color <- as.factor(input$color)
           row.names(res) <- c("Current values")
